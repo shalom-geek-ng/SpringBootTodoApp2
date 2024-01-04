@@ -21,4 +21,7 @@ public class TodoService {
 	public List<TodoClass> todoList(){
 		return todo;
 	}
+	public void addedTodo(String name, String description, LocalDate date,Boolean done) {
+		todo.add(new TodoClass(++count,name,description,date,done));
+	}
 }

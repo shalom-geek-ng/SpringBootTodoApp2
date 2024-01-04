@@ -1,5 +1,6 @@
 package com.shalomTodoApp.TodoApp5.Rest;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,9 +49,10 @@ public class RestApplication {
 		return "addTodo";
 	}
 	@RequestMapping(value="/addNewTodo", method=RequestMethod.POST)
-	public String getmyTodo(ModelMap model) {
+	public String getmyTodo(ModelMap model,String Description) {
 		List<TodoClass> todos = todo.todoList();
 		model.put("todos", todos);
+		todo.addedTodo((String) model.get("name"), Description, LocalDate.now(), false);
 	return "Todo";
 	}
 }
