@@ -4,7 +4,7 @@
 
 **This repository houses a straightforward ToDo application crafted with the robust Spring Boot framework. Empowering users to effortlessly manage tasks, the application offers features such as task creation, updates, deletions, and task completion tracking.**
 
-**Note:The Password to the loggin is password**
+**Note:The Password to the loggin is mypassword**
 
 ## Features
 
