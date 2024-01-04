@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,9 +8,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="post">
-	Description: <input type="text" name="Description"/>
-	<input type="submit"/>
-	</form>
+	<form:form method="post" modelAttribute="myTodo">
+	Description: <form:input type="text" path="whatToDo"/>
+	
+	<input type="submit"/><br>
+	<form:errors cssClass="text-warning" path="whatToDo"/>
+	
+	</form:form>
 </body>
 </html>

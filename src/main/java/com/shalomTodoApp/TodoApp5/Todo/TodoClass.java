@@ -4,10 +4,13 @@ import java.time.LocalDate;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.validation.constraints.Size;
+
 @Component
 public class TodoClass {
 	private int id;
 	private String name;
+	@Size(min=10,message="Not up to 10 lines")
 	private String whatToDo;
 	private LocalDate date;
 	private boolean done;

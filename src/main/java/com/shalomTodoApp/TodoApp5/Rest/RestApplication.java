@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.shalomTodoApp.TodoApp5.Authentication.AuthenticationService;
 import com.shalomTodoApp.TodoApp5.Todo.TodoClass;
 import com.shalomTodoApp.TodoApp5.Todo.TodoService;
+
+import jakarta.validation.Valid;
 
 @Controller
 @SessionAttributes("name")
@@ -45,14 +49,21 @@ public class RestApplication {
 	}
 	
 	@RequestMapping(value="/addNewTodo", method=RequestMethod.GET)
-	public String addmyTodo() {
+	public String addmyTodo(ModelMap model) {
+		TodoClass todo = new TodoClass(0,(String) model.get("name"),"Write a todo",LocalDate.now(),
+				true);
+		model.put("myTodo", todo);
 		return "addTodo";
 	}
 	@RequestMapping(value="/addNewTodo", method=RequestMethod.POST)
-	public String getmyTodo(ModelMap model,String Description) {
+	public String getmyTodo(ModelMap model,@ModelAttribute("myTodo") @Valid TodoClass myTodo,
+			BindingResult result) {
+		if(result.hasErrors()) {
+			return "addTodo";
+		}
 		List<TodoClass> todos = todo.todoList();
 		model.put("todos", todos);
-		todo.addedTodo((String) model.get("name"), Description, LocalDate.now(), false);
+		todo.addedTodo((String) model.get("name"), myTodo.getWhatToDo(), LocalDate.now(), false);
 	return "Todo";
 	}
 }
