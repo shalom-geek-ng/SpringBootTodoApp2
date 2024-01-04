@@ -37,7 +37,7 @@
 		</tbody>
 	
 	</table>
-	<div class="btn btn-success">Add Todo</div>
+	<a href="/addNewTodo"> <div class="btn btn-success">Add Todo</div></a>
 	</div>
 	<script src="/webjars/jquery/3.6.0/jquery.min.js"></script>
 	<script src="/webjars/bootstrap/5.3.2/js/bootstrap.min.js"></script>
