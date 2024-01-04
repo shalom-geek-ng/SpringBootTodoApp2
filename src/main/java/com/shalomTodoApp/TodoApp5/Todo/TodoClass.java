@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class TodoClass {
 	private int id;
 	private String name;
-	private String WhatToDO;
+	private String whatToDo;
 	private LocalDate date;
 	private boolean done;
 	
@@ -17,26 +17,33 @@ public class TodoClass {
 		
 	}
 	
-	public TodoClass(int id, String name, String whatToDO, LocalDate date, boolean done) {
+
+	
+	
+public TodoClass(int id, String name, String whatToDo, LocalDate date, boolean done) {
 		super();
 		this.id = id;
 		this.name = name;
-		WhatToDO = whatToDO;
+		this.whatToDo = whatToDo;
 		this.date = date;
 		this.done = done;
 	}
-	
-	
-//	Getters
+
+
+
+
+	//	Getters
 	public int getId() {
 		return id;
 	}
 	public String getName() {
 		return name;
 	}
-	public String getWhatToDO() {
-		return WhatToDO;
+	
+	public String getWhatToDo() {
+		return whatToDo;
 	}
+
 	public LocalDate getDate() {
 		return date;
 	}
@@ -51,8 +58,8 @@ public class TodoClass {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public void setWhatToDO(String whatToDO) {
-		WhatToDO = whatToDO;
+	public void setWhatToDo(String whatToDo) {
+		this.whatToDo = whatToDo;
 	}
 	public void setDate(LocalDate date) {
 		this.date = date;
@@ -61,12 +68,17 @@ public class TodoClass {
 		this.done = done;
 	}
 
-//	ToString
+
+
+
 	@Override
 	public String toString() {
-		return "TodoClass [id=" + id + ", name=" + name + ", WhatToDO=" + WhatToDO + ", date=" + date + ", done=" + done
+		return "TodoClass [id=" + id + ", name=" + name + ", whatToDo=" + whatToDo + ", date=" + date + ", done=" + done
 				+ "]";
 	}
+
+//	ToString
+
 	
 	
 	

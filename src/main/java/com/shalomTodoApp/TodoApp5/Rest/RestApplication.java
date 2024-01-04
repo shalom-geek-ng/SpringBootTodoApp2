@@ -23,7 +23,7 @@ public class RestApplication {
 	private TodoService todo;
 
 	@RequestMapping(value="", method=RequestMethod.GET)
-	public String login() {
+	public String loggin() {
 		return "loggin";
 	}
 	@RequestMapping(value="", method=RequestMethod.POST)
@@ -31,7 +31,7 @@ public class RestApplication {
 			@RequestParam String password) {
 		if(authenticate.AuthenticatePassword(password)) {
 			List<TodoClass> todos = todo.todoList();
-			model.put("todoss", todos);
+			model.put("todos", todos);
 			model.put("name", name);
 		return "Todo";
 		}
