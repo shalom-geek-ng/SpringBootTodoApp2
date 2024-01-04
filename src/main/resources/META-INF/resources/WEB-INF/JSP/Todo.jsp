@@ -8,6 +8,6 @@
 </head>
 <body>
 	<h1>Welcome ${name}</h1>
-	Your todos are 
+	Your todos are ${todoss}
 </body>
 </html>
