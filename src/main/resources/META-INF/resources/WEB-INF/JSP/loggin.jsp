@@ -12,5 +12,6 @@
 	Password: <input type="password" name="password" required="required"/>
 	<input type="submit"/>
 	</form>
+		<pre> ${Error}</pre>
 </body>
 </html>
