@@ -22,6 +22,7 @@
 				<th>WhatToDo</th>
 				<th>Date</th>
 				<th>Done</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -32,6 +33,7 @@
 				<td>${TodoClass.whatToDo}</td>
 				<td>${TodoClass.date}</td>
 				<td>${TodoClass.done}</td>
+				<td><a href="/delete-todo?${TodoClass.id}" class="btn btn-danger">Delete</a></td>
 			</tr>
 		</c:forEach>
 		</tbody>
