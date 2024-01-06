@@ -33,7 +33,7 @@
 				<td>${TodoClass.whatToDo}</td>
 				<td>${TodoClass.date}</td>
 				<td>${TodoClass.done}</td>
-				<td><a href="/delete-todo?${TodoClass.id}" class="btn btn-danger">Delete</a></td>
+				<td><a href="/delete-todo?id=${TodoClass.id}" class="btn btn-danger">Delete</a></td>
 			</tr>
 		</c:forEach>
 		</tbody>
