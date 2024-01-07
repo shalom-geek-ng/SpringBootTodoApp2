@@ -77,13 +77,22 @@ public class RestApplication {
 	}
 	
 	@RequestMapping(value="/update-todo",method=RequestMethod.GET)
-	public String showUpdateTodo(ModelMap model) {
-		TodoClass todo = new TodoClass(0,(String) model.get("name"),"Write a todo",LocalDate.now(),
-				true);
-		model.put("myTodo", todo);
+	public String showUpdateTodo(ModelMap model, @RequestParam int id) {
+		TodoClass ytodo = todo.updateTodo(id); 
+		model.put("myTodo", ytodo);
 		return "addTodo";
 		
 	}
 
-	
+	@RequestMapping(value="/update-todo", method=RequestMethod.POST)
+	public String getUpdateTodo(ModelMap model,@ModelAttribute("myTodo") @Valid TodoClass myTodo,
+			BindingResult result) {
+		if(result.hasErrors()) {
+			return "addTodo";
+		}
+		List<TodoClass> todos = todo.todoList();
+		model.put("todos", todos);
+		todo.addedTodo((String) model.get("name"), myTodo.getWhatToDo(), LocalDate.now(), false);
+	return "Todo";
+	}
 }
