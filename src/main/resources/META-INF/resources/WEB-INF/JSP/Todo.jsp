@@ -34,6 +34,7 @@
 				<td>${TodoClass.date}</td>
 				<td>${TodoClass.done}</td>
 				<td><a href="/delete-todo?id=${TodoClass.id}" class="btn btn-danger">Delete</a></td>
+				<td><a href="/update-todo?id=${TodoClass.id}" class="btn btn-success">Update</a></td>
 			</tr>
 		</c:forEach>
 		</tbody>
