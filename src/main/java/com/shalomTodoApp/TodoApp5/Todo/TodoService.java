@@ -8,6 +8,7 @@ import java.util.function.Predicate;
 import org.springframework.stereotype.Service;
 
 import jakarta.annotation.PostConstruct;
+import jakarta.validation.Valid;
 
 @Service
 public class TodoService {
@@ -37,5 +38,11 @@ public class TodoService {
 		return mytodo;
 		
 	}
+	public void updatedTodoPost(@Valid TodoClass myTodo) {
+		deleteTodo(myTodo.getId());
+		todo.add(myTodo);
+		
+	}
+
 
 }

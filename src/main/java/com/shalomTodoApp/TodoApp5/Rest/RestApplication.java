@@ -90,9 +90,12 @@ public class RestApplication {
 		if(result.hasErrors()) {
 			return "addTodo";
 		}
+		String userName = (String) model.get("name");	
+		myTodo.setName(userName);
 		List<TodoClass> todos = todo.todoList();
+	
 		model.put("todos", todos);
-		todo.addedTodo((String) model.get("name"), myTodo.getWhatToDo(), LocalDate.now(), false);
+		todo.updatedTodoPost(myTodo);
 	return "Todo";
 	}
 }
