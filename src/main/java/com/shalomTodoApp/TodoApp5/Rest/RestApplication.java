@@ -67,6 +67,13 @@ public class RestApplication {
 	return "Todo";
 	}
 	
+	@RequestMapping(value="/delete-todo")
+	public String deleteTodo(int id, ModelMap model) {
+		List<TodoClass> todos = todo.todoList();
+		model.put("todos", todos);
+		
+		return "Todo";
+	}
 
 	
 }
