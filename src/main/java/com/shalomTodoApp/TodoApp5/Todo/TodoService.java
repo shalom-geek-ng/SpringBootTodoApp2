@@ -26,7 +26,10 @@ public class TodoService {
 	public void addedTodo(String name, String description, LocalDate date,Boolean done) {
 		todo.add(new TodoClass(++count,name,description,date,done));
 	}
-	
+public void deleteTodo(int id) {
+	Predicate<? super TodoClass> predicate = TodoPredicate -> TodoPredicate.getId() == id;
+	todo.removeIf(predicate );
+}
 
 
 

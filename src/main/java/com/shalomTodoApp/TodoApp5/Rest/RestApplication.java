@@ -68,34 +68,11 @@ public class RestApplication {
 	}
 	
 	@RequestMapping(value="/delete-todo")
-	public String deleteTodo(@RequestParam int id, ModelMap model) {
+	public String deleteTodo(@RequestParam int id,ModelMap model) {
 		List<TodoClass> todos = todo.todoList();
 		todo.deleteTodo(id);
 		model.put("todos", todos);
-		
-		return "Todo";
-	}
-	
-	@RequestMapping(value="/update-todo",method=RequestMethod.GET)
-	public String showUpdateTodo(ModelMap model, @RequestParam int id) {
-		TodoClass ytodo = todo.updateTodo(id); 
-		model.put("myTodo", ytodo);
-		return "addTodo";
-		
-	}
-
-	@RequestMapping(value="/update-todo", method=RequestMethod.POST)
-	public String getUpdateTodo(ModelMap model,@ModelAttribute("myTodo") @Valid TodoClass myTodo,
-			BindingResult result) {
-		if(result.hasErrors()) {
-			return "addTodo";
-		}
-		String userName = (String) model.get("name");	
-		myTodo.setName(userName);
-		List<TodoClass> todos = todo.todoList();
-	
-		model.put("todos", todos);
-		todo.updatedTodoPost(myTodo);
 	return "Todo";
 	}
+	
 }
