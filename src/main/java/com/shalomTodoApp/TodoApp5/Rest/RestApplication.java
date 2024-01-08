@@ -63,7 +63,7 @@ public class RestApplication {
 		}
 		List<TodoClass> todos = todo.todoList();
 		model.put("todos", todos);
-		todo.addedTodo((String) model.get("name"), myTodo.getWhatToDo(), LocalDate.now(), false);
+		todo.addedTodo((String) model.get("name"), myTodo.getWhatToDo(), myTodo.getDate(), false);
 	return "Todo";
 	}
 	
@@ -72,6 +72,23 @@ public class RestApplication {
 		List<TodoClass> todos = todo.todoList();
 		todo.deleteTodo(id);
 		model.put("todos", todos);
+	return "Todo";
+	}
+	
+	@RequestMapping(value="/update-todo",method=RequestMethod.GET)
+	public String updateTodo(@RequestParam int id,ModelMap model) {
+		TodoClass mytodo = todo.showUpdateTodo(id);
+		model.put("myTodo", mytodo);
+		return "addTodo";
+	}
+	
+	@RequestMapping(value="/update-todo",method=RequestMethod.POST)
+	public String updatemyTodo(@RequestParam int id,ModelMap model,@ModelAttribute("myTodo") @Valid TodoClass myTodo) {
+		List<TodoClass> todos = todo.todoList();
+		String username = (String) model.get("name");
+		model.put("todos", todos);
+		myTodo.setName(username);
+		todo.UpdateTodo(myTodo);
 	return "Todo";
 	}
 	

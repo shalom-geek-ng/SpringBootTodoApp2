@@ -30,6 +30,16 @@ public void deleteTodo(int id) {
 	Predicate<? super TodoClass> predicate = TodoPredicate -> TodoPredicate.getId() == id;
 	todo.removeIf(predicate );
 }
+public TodoClass showUpdateTodo(int id) {
+	Predicate<? super TodoClass> predicate = TodoPredicate -> TodoPredicate.getId() == id;
+	TodoClass mytodo = todo.stream().filter(predicate).findFirst().get();
+	return mytodo;
+}
+
+public void UpdateTodo(@Valid TodoClass todoBean) {
+	deleteTodo(todoBean.getId());
+	todo.add(todoBean);
+}
 
 
 
