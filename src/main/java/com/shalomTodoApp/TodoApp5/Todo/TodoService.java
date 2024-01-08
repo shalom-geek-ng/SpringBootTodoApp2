@@ -27,22 +27,7 @@ public class TodoService {
 		todo.add(new TodoClass(++count,name,description,date,done));
 	}
 	
-	public void deleteTodo(int id) {
-		Predicate<? super TodoClass> predicate = todoPredicate -> todoPredicate.getId() == id;
-		todo.removeIf(predicate);
-		
-	}
-	public TodoClass updateTodo(int id) {
-		Predicate<? super TodoClass> predicate = todoPredicate -> todoPredicate.getId() == id;
-		TodoClass mytodo = todo.stream().filter(predicate).findFirst().get();
-		return mytodo;
-		
-	}
-	public void updatedTodoPost(@Valid TodoClass myTodo) {
-		deleteTodo(myTodo.getId());
-		todo.add(myTodo);
-		
-	}
+
 
 
 }
