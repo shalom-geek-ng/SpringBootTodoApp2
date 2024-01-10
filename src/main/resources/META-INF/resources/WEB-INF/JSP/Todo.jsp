@@ -9,6 +9,7 @@
 <link href="/webjars/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet"></link>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%@ include file="JSPF/navigation.jspf" %>	
 </head>
 <body>
 <div class="container">

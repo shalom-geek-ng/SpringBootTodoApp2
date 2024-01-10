@@ -29,24 +29,23 @@ public class RestApplication {
 	@Autowired
 	private TodoService todo;
 
-	@RequestMapping(value="", method=RequestMethod.GET)
-	public String loggin() {
-		return "loggin";
+	
+	@RequestMapping("")
+	public String welcome() {
+		return "welcome";
 	}
-	@RequestMapping(value="", method=RequestMethod.POST)
-	public String mytodo(@RequestParam String name, ModelMap model,
-			@RequestParam String password) {
-		if(authenticate.AuthenticatePassword(password)) {
+	
+	@RequestMapping(value="/List-Todo")
+	public String mytodo(ModelMap model) {
+		
 			List<TodoClass> todos = todo.todoList();
+			model.put("name", "Shalom");
 			model.put("todos", todos);
-			model.put("name", name);
+		
 		return "Todo";
 		}
-		else {
-			model.put("Error", "Your password is incorrect");
-			return "loggin";
-		}
-	}
+	
+	
 	
 	@RequestMapping(value="/addNewTodo", method=RequestMethod.GET)
 	public String addmyTodo(ModelMap model) {

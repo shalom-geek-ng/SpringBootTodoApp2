@@ -6,10 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/webjars/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css" rel="stylesheet"></link>
-</head>
-<body>
 	
+	<%@ include file="JSPF/navigation.jspf" %>	
 	<form:form method="post" modelAttribute="myTodo">
 	
 	
@@ -18,7 +16,9 @@ fieldset{
 	border:0px
 }
 </style>
-	<fieldset>
+	
+	<div class="container">
+	<fieldset class="mb-2">
 	<form:label path="whatToDo">
 	Description: <form:input type="text" path="whatToDo"/>
 	<form:errors cssClass="text-warning" path="whatToDo"/>
@@ -36,13 +36,13 @@ fieldset{
 	
 	
 	<input type="submit"/><br>
-	
+	</div>
 	
 	</form:form>
 	
 	<script src="/webjars/jquery/3.6.0/jquery.min.js"></script>
 	<script src="/webjars/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-	
+		<script src="/webjars/bootstrap/5.3.2/js/bootstrap.min.js"></script>
 	
 <script type="text/javascript">
 $('#date').datepicker({
