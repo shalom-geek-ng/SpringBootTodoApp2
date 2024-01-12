@@ -24,7 +24,7 @@ public class UserVerifcation {
 				UserDetails userdetails = User.builder()
 				.passwordEncoder(passwordencoder )
 				.username("Shalom")
-				.password("myPassword")
+				.password("mypassword")
 				.roles("USER","ADMIN")
 				.build();
 		

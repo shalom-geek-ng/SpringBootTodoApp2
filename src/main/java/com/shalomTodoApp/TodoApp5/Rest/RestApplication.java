@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -39,13 +41,19 @@ public class RestApplication {
 	public String mytodo(ModelMap model) {
 		
 			List<TodoClass> todos = todo.todoList();
-			model.put("name", "Shalom");
+			model.put("name", userLogInfo());
 			model.put("todos", todos);
 		
 		return "Todo";
 		}
 	
 	
+	public String userLogInfo() {
+		Authentication authenticate =
+				SecurityContextHolder.getContext().getAuthentication();
+		
+		return authenticate.getName();
+	}
 	
 	@RequestMapping(value="/addNewTodo", method=RequestMethod.GET)
 	public String addmyTodo(ModelMap model) {
