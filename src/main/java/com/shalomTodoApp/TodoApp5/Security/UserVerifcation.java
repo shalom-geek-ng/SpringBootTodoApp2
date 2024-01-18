@@ -18,20 +18,40 @@ public class UserVerifcation {
 	
 	@Bean
 	public InMemoryUserDetailsManager storeUserDetails() {
+		
+		
+//		
+//		UserDetails userdetails1 = createUserDetails("Shalom", "password");
+//		UserDetails userdetails2 = createUserDetails("Mason", "1234");
+		
+	
+
+		UserDetails userdetails = createUserDetails("Shalom", "Password");
+		UserDetails userdetails2 = createUserDetails("Dele", "Password");
+		
+		return new InMemoryUserDetailsManager(userdetails,userdetails2);
+		
+		
+	}
+
+
+
+
+	private UserDetails createUserDetails(String username, String password) {
 		Function<String, String> passwordencoder = 
 				input -> bcrpytPasswordencoder().encode(input);
 		
 				UserDetails userdetails = User.builder()
 				.passwordEncoder(passwordencoder )
-				.username("Shalom")
-				.password("mypassword")
+				.username(username)
+				.password(password)
 				.roles("USER","ADMIN")
 				.build();
-		
-		return new InMemoryUserDetailsManager(userdetails);
-		
-		
+		return userdetails;
 	}
+
+			
+
 	
 	@Bean
 	public PasswordEncoder bcrpytPasswordencoder() {

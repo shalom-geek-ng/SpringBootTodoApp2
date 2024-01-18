@@ -33,7 +33,8 @@ public class RestApplication {
 
 	
 	@RequestMapping("")
-	public String welcome() {
+	public String welcome(ModelMap model) {
+		model.put("name", userLogInfo());
 		return "welcome";
 	}
 	
